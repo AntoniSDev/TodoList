@@ -4,8 +4,6 @@ import { Button } from "./components/Button";
 import { Test } from "./components/Test";
 import { Todolist } from "./components/Todolist";
 import { useState } from "react";
-import { EditInput } from "./components/EditInput";
-import { EditButton } from "./components/EditButton";
 
 function App() {
   const [tasks, setTasks] = useState<string[]>([]);
@@ -16,7 +14,7 @@ function App() {
 
   const deleteTask = (index: number) => {
     // console.log("index de cette ligne: ", index);
-    const newTasks = tasks.filter((task, i) => i !== index);
+    const newTasks = tasks.filter((_task, i) => i !== index);
     setTasks(newTasks);
   };
 
@@ -41,7 +39,7 @@ function App() {
       />
       {modifClic && (
         <div>
-          <EditButton
+          <Button
             onClick={() => {
               // si ya un index à edit
               if (modifIndex !== null) {
@@ -62,7 +60,7 @@ function App() {
             label={"confirmer"}
             backgroundColor={"salmon"}
           />
-          <EditInput
+          <Input
             placeholder="Editer une tâche"
             name="task"
             onTaskChange={(task) => {
