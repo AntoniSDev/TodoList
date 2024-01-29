@@ -1,10 +1,5 @@
 import { useState } from "react";
-
-interface InputProps {
-  placeholder: string;
-  name: string;
-  onTaskChange: (task: string) => void;
-}
+import { InputProps } from "../interface/types";
 
 export const Input = (props: InputProps) => {
   const [value, setValue] = useState<string>("");

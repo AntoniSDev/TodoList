@@ -1,7 +1,4 @@
-interface TestProps {
-  title: string;
-  text: string;
-}
+import { TestProps } from "../interface/types";
 
 export const Test = (props: TestProps) => {
   return (

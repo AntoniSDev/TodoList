@@ -1,8 +1,4 @@
-interface ButtonProps {
-  onClick: () => void;
-  label: string;
-  backgroundColor: string;
-}
+import { ButtonProps } from "../interface/types";
 
 export const Button = (props: ButtonProps) => {
   return (

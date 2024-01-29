@@ -37,6 +37,15 @@ function App() {
           setTodo(task);
         }}
       />
+      <Button
+        onClick={() => {
+          const newToDo = [...tasks];
+          newToDo.push(todo);
+          setTasks(newToDo);
+        }}
+        label={"Ajouter"}
+        backgroundColor={"pink"}
+      />
       {modifClic && (
         <div>
           <Button
@@ -57,11 +66,11 @@ function App() {
                 setTodo("");
               }
             }}
-            label={"confirmer"}
+            label={"confirmer la modif"}
             backgroundColor={"salmon"}
           />
           <Input
-            placeholder="Editer une tâche"
+            placeholder={`Éditer la tâche ${tasks[modifIndex || 0]}`}
             name="task"
             onTaskChange={(task) => {
               setTodo(task);
@@ -74,15 +83,6 @@ function App() {
         tasks={tasks}
         IdTask={deleteTask}
         TaskInfo={(task, index) => editTaskInfo(task, index)}
-      />
-      <Button
-        onClick={() => {
-          const newToDo = [...tasks];
-          newToDo.push(todo);
-          setTasks(newToDo);
-        }}
-        label={"Ajouter"}
-        backgroundColor={"pink"}
       />
     </div>
   );
