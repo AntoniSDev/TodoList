@@ -3,7 +3,7 @@ import { Input } from "./components/Input";
 import { Button } from "./components/Button";
 import { Test } from "./components/Test";
 import { Todolist } from "./components/Todolist";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [tasks, setTasks] = useState<string[]>([]);
@@ -26,6 +26,14 @@ function App() {
     setmodifIndex(index);
   };
 
+  useEffect(() => {
+    // verifier si le tableau de task est vide sinon l'alert se lance tout ltemps
+    if (tasks.length > 0) {
+      // afficher l'alerte et recuperer la task ajoutée, -1 recupère la dernière task du tableau
+      alert("Nyu task ajoutée : " + tasks[tasks.length - 1]);
+    }
+  }, [tasks]);
+
   return (
     <div>
       <Test title="To Do List" text="Mes trucs à faire" />
@@ -39,9 +47,11 @@ function App() {
       />
       <Button
         onClick={() => {
-          const newToDo = [...tasks];
-          newToDo.push(todo);
-          setTasks(newToDo);
+          if (todo !== "") {
+            const newToDo = [...tasks];
+            newToDo.push(todo);
+            setTasks(newToDo);
+          }
         }}
         label={"Ajouter"}
         backgroundColor={"pink"}
